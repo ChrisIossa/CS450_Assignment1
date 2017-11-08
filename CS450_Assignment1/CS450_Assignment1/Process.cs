@@ -23,6 +23,10 @@ namespace CS450_Assignment1
             arrvTime = arrvIn;
         }
 
+        public void initalize()
+        {
+           
+        }
 
         //seters for member variables
 

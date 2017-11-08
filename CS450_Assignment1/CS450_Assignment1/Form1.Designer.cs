@@ -28,30 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rbtn_FCFS = new System.Windows.Forms.RadioButton();
+            this.rbtnFCFS = new System.Windows.Forms.RadioButton();
             this.rbtn_RoundRobin = new System.Windows.Forms.RadioButton();
             this.lbl_SchedAlg = new System.Windows.Forms.Label();
             this.lblPrefEval = new System.Windows.Forms.Label();
             this.rbtnSingAlg = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbtnComp = new System.Windows.Forms.RadioButton();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lblCurrTime = new System.Windows.Forms.Label();
+            this.txtConsole = new System.Windows.Forms.TextBox();
+            this.txtCurrTime = new System.Windows.Forms.TextBox();
+            this.lblNumLive = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.txtProcCnt = new System.Windows.Forms.TextBox();
+            this.lblMaxProc = new System.Windows.Forms.Label();
+            this.lblNumFin = new System.Windows.Forms.Label();
+            this.txtNumFin = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
-            // rbtn_FCFS
+            // rbtnFCFS
             // 
-            this.rbtn_FCFS.AutoSize = true;
-            this.rbtn_FCFS.Location = new System.Drawing.Point(24, 485);
-            this.rbtn_FCFS.Name = "rbtn_FCFS";
-            this.rbtn_FCFS.Size = new System.Drawing.Size(63, 21);
-            this.rbtn_FCFS.TabIndex = 0;
-            this.rbtn_FCFS.TabStop = true;
-            this.rbtn_FCFS.Text = "FCFS";
-            this.rbtn_FCFS.UseVisualStyleBackColor = true;
-            this.rbtn_FCFS.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.rbtnFCFS.AutoSize = true;
+            this.rbtnFCFS.Location = new System.Drawing.Point(610, 185);
+            this.rbtnFCFS.Name = "rbtnFCFS";
+            this.rbtnFCFS.Size = new System.Drawing.Size(63, 21);
+            this.rbtnFCFS.TabIndex = 0;
+            this.rbtnFCFS.TabStop = true;
+            this.rbtnFCFS.Text = "FCFS";
+            this.rbtnFCFS.UseVisualStyleBackColor = true;
+            this.rbtnFCFS.CheckedChanged += new System.EventHandler(this.rbtnFCFS_CheckedChanged);
             // 
             // rbtn_RoundRobin
             // 
             this.rbtn_RoundRobin.AutoSize = true;
-            this.rbtn_RoundRobin.Location = new System.Drawing.Point(24, 458);
+            this.rbtn_RoundRobin.Location = new System.Drawing.Point(610, 162);
             this.rbtn_RoundRobin.Name = "rbtn_RoundRobin";
             this.rbtn_RoundRobin.Size = new System.Drawing.Size(112, 21);
             this.rbtn_RoundRobin.TabIndex = 1;
@@ -62,7 +73,7 @@
             // lbl_SchedAlg
             // 
             this.lbl_SchedAlg.AutoSize = true;
-            this.lbl_SchedAlg.Location = new System.Drawing.Point(24, 435);
+            this.lbl_SchedAlg.Location = new System.Drawing.Point(610, 139);
             this.lbl_SchedAlg.Name = "lbl_SchedAlg";
             this.lbl_SchedAlg.Size = new System.Drawing.Size(141, 17);
             this.lbl_SchedAlg.TabIndex = 2;
@@ -71,7 +82,7 @@
             // lblPrefEval
             // 
             this.lblPrefEval.AutoSize = true;
-            this.lblPrefEval.Location = new System.Drawing.Point(523, 435);
+            this.lblPrefEval.Location = new System.Drawing.Point(610, 24);
             this.lblPrefEval.Name = "lblPrefEval";
             this.lblPrefEval.Size = new System.Drawing.Size(159, 17);
             this.lblPrefEval.TabIndex = 3;
@@ -81,39 +92,154 @@
             // rbtnSingAlg
             // 
             this.rbtnSingAlg.AutoSize = true;
-            this.rbtnSingAlg.Location = new System.Drawing.Point(526, 458);
+            this.rbtnSingAlg.Location = new System.Drawing.Point(610, 45);
             this.rbtnSingAlg.Name = "rbtnSingAlg";
             this.rbtnSingAlg.Size = new System.Drawing.Size(131, 21);
             this.rbtnSingAlg.TabIndex = 4;
             this.rbtnSingAlg.TabStop = true;
             this.rbtnSingAlg.Text = "Single Algorithm";
             this.rbtnSingAlg.UseVisualStyleBackColor = true;
+            this.rbtnSingAlg.CheckedChanged += new System.EventHandler(this.rbtnSingAlg_CheckedChanged);
             // 
-            // radioButton1
+            // rbtnComp
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(526, 485);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(110, 21);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged_1);
+            this.rbtnComp.AutoSize = true;
+            this.rbtnComp.Location = new System.Drawing.Point(610, 70);
+            this.rbtnComp.Name = "rbtnComp";
+            this.rbtnComp.Size = new System.Drawing.Size(167, 21);
+            this.rbtnComp.TabIndex = 5;
+            this.rbtnComp.TabStop = true;
+            this.rbtnComp.Text = "Algorithm Comparison";
+            this.rbtnComp.UseVisualStyleBackColor = true;
+            this.rbtnComp.CheckedChanged += new System.EventHandler(this.rbtnComp_CheckedChanged_1);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(610, 350);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lblCurrTime
+            // 
+            this.lblCurrTime.AutoSize = true;
+            this.lblCurrTime.Location = new System.Drawing.Point(610, 240);
+            this.lblCurrTime.Name = "lblCurrTime";
+            this.lblCurrTime.Size = new System.Drawing.Size(90, 17);
+            this.lblCurrTime.TabIndex = 27;
+            this.lblCurrTime.Text = "Current Time";
+            // 
+            // txtConsole
+            // 
+            this.txtConsole.Location = new System.Drawing.Point(18, 21);
+            this.txtConsole.Multiline = true;
+            this.txtConsole.Name = "txtConsole";
+            this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtConsole.Size = new System.Drawing.Size(568, 352);
+            this.txtConsole.TabIndex = 28;
+            this.txtConsole.WordWrap = false;
+            // 
+            // txtCurrTime
+            // 
+            this.txtCurrTime.Location = new System.Drawing.Point(707, 237);
+            this.txtCurrTime.Name = "txtCurrTime";
+            this.txtCurrTime.ReadOnly = true;
+            this.txtCurrTime.Size = new System.Drawing.Size(129, 22);
+            this.txtCurrTime.TabIndex = 29;
+            // 
+            // lblNumLive
+            // 
+            this.lblNumLive.AutoSize = true;
+            this.lblNumLive.Location = new System.Drawing.Point(610, 268);
+            this.lblNumLive.Name = "lblNumLive";
+            this.lblNumLive.Size = new System.Drawing.Size(46, 17);
+            this.lblNumLive.TabIndex = 30;
+            this.lblNumLive.Text = "# Live";
+            this.lblNumLive.Click += new System.EventHandler(this.lblProcCnt_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(707, 321);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDown1.TabIndex = 31;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // txtProcCnt
+            // 
+            this.txtProcCnt.Location = new System.Drawing.Point(707, 265);
+            this.txtProcCnt.Name = "txtProcCnt";
+            this.txtProcCnt.ReadOnly = true;
+            this.txtProcCnt.Size = new System.Drawing.Size(100, 22);
+            this.txtProcCnt.TabIndex = 32;
+            // 
+            // lblMaxProc
+            // 
+            this.lblMaxProc.AutoSize = true;
+            this.lblMaxProc.Location = new System.Drawing.Point(610, 323);
+            this.lblMaxProc.Name = "lblMaxProc";
+            this.lblMaxProc.Size = new System.Drawing.Size(78, 17);
+            this.lblMaxProc.TabIndex = 33;
+            this.lblMaxProc.Text = "Max # Proc";
+            // 
+            // lblNumFin
+            // 
+            this.lblNumFin.AutoSize = true;
+            this.lblNumFin.Location = new System.Drawing.Point(610, 298);
+            this.lblNumFin.Name = "lblNumFin";
+            this.lblNumFin.Size = new System.Drawing.Size(73, 17);
+            this.lblNumFin.TabIndex = 34;
+            this.lblNumFin.Text = "# Finished";
+            // 
+            // txtNumFin
+            // 
+            this.txtNumFin.Location = new System.Drawing.Point(707, 293);
+            this.txtNumFin.Name = "txtNumFin";
+            this.txtNumFin.ReadOnly = true;
+            this.txtNumFin.Size = new System.Drawing.Size(100, 22);
+            this.txtNumFin.TabIndex = 35;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 559);
-            this.Controls.Add(this.radioButton1);
+            this.ClientSize = new System.Drawing.Size(860, 390);
+            this.Controls.Add(this.txtNumFin);
+            this.Controls.Add(this.lblNumFin);
+            this.Controls.Add(this.lblMaxProc);
+            this.Controls.Add(this.txtProcCnt);
+            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.lblNumLive);
+            this.Controls.Add(this.txtCurrTime);
+            this.Controls.Add(this.txtConsole);
+            this.Controls.Add(this.lblCurrTime);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.rbtnComp);
             this.Controls.Add(this.rbtnSingAlg);
             this.Controls.Add(this.lblPrefEval);
             this.Controls.Add(this.lbl_SchedAlg);
             this.Controls.Add(this.rbtn_RoundRobin);
-            this.Controls.Add(this.rbtn_FCFS);
+            this.Controls.Add(this.rbtnFCFS);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,12 +247,22 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton rbtn_FCFS;
+        private System.Windows.Forms.RadioButton rbtnFCFS;
         private System.Windows.Forms.RadioButton rbtn_RoundRobin;
         private System.Windows.Forms.Label lbl_SchedAlg;
         private System.Windows.Forms.Label lblPrefEval;
         private System.Windows.Forms.RadioButton rbtnSingAlg;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbtnComp;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblCurrTime;
+        private System.Windows.Forms.TextBox txtConsole;
+        private System.Windows.Forms.TextBox txtCurrTime;
+        private System.Windows.Forms.Label lblNumLive;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox txtProcCnt;
+        private System.Windows.Forms.Label lblMaxProc;
+        private System.Windows.Forms.Label lblNumFin;
+        private System.Windows.Forms.TextBox txtNumFin;
     }
 }
 

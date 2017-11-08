@@ -17,6 +17,34 @@ namespace CS450_Assignment1
             InitializeComponent();
         }
 
-        
+        private void rbtnFCFS_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtnComp_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbtnSingAlg_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblProcCnt_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
