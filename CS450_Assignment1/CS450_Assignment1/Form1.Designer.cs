@@ -58,7 +58,6 @@
             this.rbtnFCFS.TabStop = true;
             this.rbtnFCFS.Text = "FCFS";
             this.rbtnFCFS.UseVisualStyleBackColor = true;
-            
             // 
             // rbtn_RoundRobin
             // 
@@ -100,7 +99,6 @@
             this.rbtnSingAlg.TabStop = true;
             this.rbtnSingAlg.Text = "Single Algorithm";
             this.rbtnSingAlg.UseVisualStyleBackColor = true;
-            
             // 
             // rbtnComp
             // 
@@ -112,7 +110,6 @@
             this.rbtnComp.TabStop = true;
             this.rbtnComp.Text = "Algorithm Comparison";
             this.rbtnComp.UseVisualStyleBackColor = true;
-            
             // 
             // btnSave
             // 
@@ -122,7 +119,6 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            
             // 
             // lblCurrTime
             // 
@@ -159,7 +155,6 @@
             this.lblNumLive.Size = new System.Drawing.Size(46, 17);
             this.lblNumLive.TabIndex = 30;
             this.lblNumLive.Text = "# Live";
-            
             // 
             // numericUpDown1
             // 
@@ -182,7 +177,6 @@
             0,
             0,
             0});
-            
             // 
             // txtProcCnt
             // 
@@ -226,7 +220,7 @@
             this.btnRun.TabIndex = 36;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
-            
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // Form1
             // 

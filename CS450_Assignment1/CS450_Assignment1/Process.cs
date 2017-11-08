@@ -8,20 +8,21 @@ namespace CS450_Assignment1
 {
     class Process
     {
-        //empty constructor
+        //empty constructor, never used by me
         Process()
         {
 
         }
 
         //constructor with varaibles passed as parameters
-        Process(String nameIn, int burstIn, int priorIn, int arrvIn)
+        Process(String nameIn, int burstIn, int priorIn)
         {
             procName = nameIn;
             burstTime = burstIn;
             priority = priorIn;
-            arrvTime = arrvIn;
+            arrvTime = DateTime.Now;
         }
+
 
        //seters for member variables
 
@@ -40,7 +41,7 @@ namespace CS450_Assignment1
             priority = priorIn;
         }
 
-        public void setArrvTime(int arrvIn)
+        public void setArrvTime(DateTime arrvIn)
         {
             arrvTime = arrvIn;
         }
@@ -62,7 +63,7 @@ namespace CS450_Assignment1
             return priority;
         }
 
-        public int getArrvTime()
+        public DateTime getArrvTime()
         {
             return arrvTime;
         }
@@ -73,6 +74,6 @@ namespace CS450_Assignment1
         private String procName = "";
         private int burstTime = 0;
         private int priority = 0;
-        private int arrvTime = 0;
+        private DateTime arrvTime;
     }
 }
