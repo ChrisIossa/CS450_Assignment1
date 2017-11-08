@@ -23,12 +23,7 @@ namespace CS450_Assignment1
             arrvTime = arrvIn;
         }
 
-        public void initalize()
-        {
-           
-        }
-
-        //seters for member variables
+       //seters for member variables
 
         public void setProcName(String nameIn)
         {

@@ -44,6 +44,7 @@
             this.lblMaxProc = new System.Windows.Forms.Label();
             this.lblNumFin = new System.Windows.Forms.Label();
             this.txtNumFin = new System.Windows.Forms.TextBox();
+            this.btnRun = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             this.rbtnFCFS.TabStop = true;
             this.rbtnFCFS.Text = "FCFS";
             this.rbtnFCFS.UseVisualStyleBackColor = true;
-            this.rbtnFCFS.CheckedChanged += new System.EventHandler(this.rbtnFCFS_CheckedChanged);
+            
             // 
             // rbtn_RoundRobin
             // 
@@ -82,7 +83,7 @@
             // lblPrefEval
             // 
             this.lblPrefEval.AutoSize = true;
-            this.lblPrefEval.Location = new System.Drawing.Point(610, 24);
+            this.lblPrefEval.Location = new System.Drawing.Point(610, 51);
             this.lblPrefEval.Name = "lblPrefEval";
             this.lblPrefEval.Size = new System.Drawing.Size(159, 17);
             this.lblPrefEval.TabIndex = 3;
@@ -92,26 +93,26 @@
             // rbtnSingAlg
             // 
             this.rbtnSingAlg.AutoSize = true;
-            this.rbtnSingAlg.Location = new System.Drawing.Point(610, 45);
+            this.rbtnSingAlg.Location = new System.Drawing.Point(610, 72);
             this.rbtnSingAlg.Name = "rbtnSingAlg";
             this.rbtnSingAlg.Size = new System.Drawing.Size(131, 21);
             this.rbtnSingAlg.TabIndex = 4;
             this.rbtnSingAlg.TabStop = true;
             this.rbtnSingAlg.Text = "Single Algorithm";
             this.rbtnSingAlg.UseVisualStyleBackColor = true;
-            this.rbtnSingAlg.CheckedChanged += new System.EventHandler(this.rbtnSingAlg_CheckedChanged);
+            
             // 
             // rbtnComp
             // 
             this.rbtnComp.AutoSize = true;
-            this.rbtnComp.Location = new System.Drawing.Point(610, 70);
+            this.rbtnComp.Location = new System.Drawing.Point(610, 97);
             this.rbtnComp.Name = "rbtnComp";
             this.rbtnComp.Size = new System.Drawing.Size(167, 21);
             this.rbtnComp.TabIndex = 5;
             this.rbtnComp.TabStop = true;
             this.rbtnComp.Text = "Algorithm Comparison";
             this.rbtnComp.UseVisualStyleBackColor = true;
-            this.rbtnComp.CheckedChanged += new System.EventHandler(this.rbtnComp_CheckedChanged_1);
+            
             // 
             // btnSave
             // 
@@ -121,7 +122,7 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            
             // 
             // lblCurrTime
             // 
@@ -158,7 +159,7 @@
             this.lblNumLive.Size = new System.Drawing.Size(46, 17);
             this.lblNumLive.TabIndex = 30;
             this.lblNumLive.Text = "# Live";
-            this.lblNumLive.Click += new System.EventHandler(this.lblProcCnt_Click);
+            
             // 
             // numericUpDown1
             // 
@@ -181,6 +182,7 @@
             0,
             0,
             0});
+            
             // 
             // txtProcCnt
             // 
@@ -216,11 +218,22 @@
             this.txtNumFin.Size = new System.Drawing.Size(100, 22);
             this.txtNumFin.TabIndex = 35;
             // 
+            // btnRun
+            // 
+            this.btnRun.Location = new System.Drawing.Point(610, 21);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(75, 23);
+            this.btnRun.TabIndex = 36;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = true;
+            
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 390);
+            this.Controls.Add(this.btnRun);
             this.Controls.Add(this.txtNumFin);
             this.Controls.Add(this.lblNumFin);
             this.Controls.Add(this.lblMaxProc);
@@ -263,6 +276,7 @@
         private System.Windows.Forms.Label lblMaxProc;
         private System.Windows.Forms.Label lblNumFin;
         private System.Windows.Forms.TextBox txtNumFin;
+        private System.Windows.Forms.Button btnRun;
     }
 }
 
