@@ -12,7 +12,7 @@ using System.IO;
 
 namespace CS450_Assignment1
 {
-    public partial class Form1 : Form
+    public partial class Simulator : Form
     {
         //private member variables
         private int maxProc = 10; //number of processes specefied by the user
@@ -22,7 +22,7 @@ namespace CS450_Assignment1
         private LinkedList<Process> processesLL;
         private Random randGen = new Random(); //RNG needed to randomly generate values
 
-        public Form1()
+        public Simulator()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace CS450_Assignment1
         private void fcfsAlg()
         {
             Queue<Process> processQueue = new Queue<Process>(); //queue to store processes waiting for CPU
-            
+            txtConsole.AppendText("Scheduling Algorithm: FCFS\r\n# of Processes: " + maxProc + "\r\n\r\n");
             //DateTime internalClock;
             for (int i = 0; i < maxProc; i++)
             {
@@ -71,7 +71,12 @@ namespace CS450_Assignment1
                 txtAvgWaitTime.Text = String.Concat((totalSeconds / (maxProc - processQueue.Count)).ToString(), " seconds");
             }
 
-            txtConsole.AppendText("\r\n");
+            txtConsole.AppendText("Avg Wait Time: " +txtAvgWaitTime.Text+ "\r\nEnd Simulator\r\n");
+
+        }
+
+        private void roundRobAlg()
+        {
 
         }
 

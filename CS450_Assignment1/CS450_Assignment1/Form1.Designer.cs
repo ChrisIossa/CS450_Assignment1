@@ -1,6 +1,6 @@
 ﻿namespace CS450_Assignment1
 {
-    partial class Form1
+    partial class Simulator
     {
         /// <summary>
         /// Required designer variable.
@@ -100,6 +100,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSave.Location = new System.Drawing.Point(605, 399);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
@@ -110,6 +111,8 @@
             // 
             // txtConsole
             // 
+            this.txtConsole.BackColor = System.Drawing.SystemColors.WindowText;
+            this.txtConsole.ForeColor = System.Drawing.Color.Gold;
             this.txtConsole.Location = new System.Drawing.Point(18, 21);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
@@ -171,6 +174,7 @@
             // 
             // btnRun
             // 
+            this.btnRun.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRun.Location = new System.Drawing.Point(610, 21);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(75, 23);
@@ -238,6 +242,7 @@
             // 
             // btnClear
             // 
+            this.btnClear.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnClear.Location = new System.Drawing.Point(605, 370);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
@@ -246,10 +251,11 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // Form1
+            // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(860, 446);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.grpboxUseSameData);
@@ -262,8 +268,9 @@
             this.Controls.Add(this.lblAvgWait);
             this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.btnSave);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Name = "Simulator";
+            this.Text = "Scheduling Simulator";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSelProcCnt)).EndInit();
             this.grpBoxSchedAlg.ResumeLayout(false);
