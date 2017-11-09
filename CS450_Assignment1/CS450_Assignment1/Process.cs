@@ -95,14 +95,7 @@ namespace CS450_Assignment1
 
         public DateTime getTurnaroundTime()
         {
-            if (waitTime != arrvTime)
-            {
-                return waitTime.AddSeconds(burstTime);
-            }
-            else
-            {
-                return arrvTime.AddSeconds(burstTime);
-            }
+            return waitTime.AddSeconds(burstTime);
         }
 
         //member variables
