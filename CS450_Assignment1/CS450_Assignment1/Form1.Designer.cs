@@ -1,6 +1,6 @@
 ﻿namespace CS450_Assignment1
 {
-    partial class lblAuthor
+    partial class frmSchedulingSim
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(lblAuthor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSchedulingSim));
             this.rbtnFCFS = new System.Windows.Forms.RadioButton();
             this.rbtnRoundRobin = new System.Windows.Forms.RadioButton();
             this.rbtnSingAlg = new System.Windows.Forms.RadioButton();
@@ -52,7 +52,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.lblQuantum = new System.Windows.Forms.Label();
             this.numSelQuantum = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblAuthor = new System.Windows.Forms.Label();
             this.lnklblAuthor = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numSelProcCnt)).BeginInit();
             this.grpBoxSchedAlg.SuspendLayout();
@@ -116,7 +116,7 @@
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSave.Location = new System.Drawing.Point(900, 21);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(75, 27);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -129,6 +129,7 @@
             this.txtConsole.Location = new System.Drawing.Point(18, 21);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
+            this.txtConsole.ReadOnly = true;
             this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtConsole.Size = new System.Drawing.Size(568, 446);
             this.txtConsole.TabIndex = 28;
@@ -145,7 +146,7 @@
             // 
             // numSelProcCnt
             // 
-            this.numSelProcCnt.Location = new System.Drawing.Point(843, 353);
+            this.numSelProcCnt.Location = new System.Drawing.Point(855, 353);
             this.numSelProcCnt.Maximum = new decimal(new int[] {
             20,
             0,
@@ -190,7 +191,7 @@
             this.btnRun.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRun.Location = new System.Drawing.Point(610, 21);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(75, 23);
+            this.btnRun.Size = new System.Drawing.Size(75, 27);
             this.btnRun.TabIndex = 36;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
@@ -233,7 +234,7 @@
             this.grpBoxSchedAlg.Controls.Add(this.txtAvgWaitTimeFCFS);
             this.grpBoxSchedAlg.Location = new System.Drawing.Point(610, 133);
             this.grpBoxSchedAlg.Name = "grpBoxSchedAlg";
-            this.grpBoxSchedAlg.Size = new System.Drawing.Size(353, 129);
+            this.grpBoxSchedAlg.Size = new System.Drawing.Size(365, 129);
             this.grpBoxSchedAlg.TabIndex = 40;
             this.grpBoxSchedAlg.TabStop = false;
             this.grpBoxSchedAlg.Text = "Scheduling Algorithm";
@@ -280,7 +281,7 @@
             this.grpBoxPerfEval.Controls.Add(this.rbtnComp);
             this.grpBoxPerfEval.Location = new System.Drawing.Point(610, 54);
             this.grpBoxPerfEval.Name = "grpBoxPerfEval";
-            this.grpBoxPerfEval.Size = new System.Drawing.Size(353, 73);
+            this.grpBoxPerfEval.Size = new System.Drawing.Size(365, 73);
             this.grpBoxPerfEval.TabIndex = 41;
             this.grpBoxPerfEval.TabStop = false;
             this.grpBoxPerfEval.Text = "Performance Evaluation";
@@ -291,7 +292,7 @@
             this.grpboxUseSameData.Controls.Add(this.rbtnReuseDataN);
             this.grpboxUseSameData.Location = new System.Drawing.Point(610, 268);
             this.grpboxUseSameData.Name = "grpboxUseSameData";
-            this.grpboxUseSameData.Size = new System.Drawing.Size(353, 72);
+            this.grpboxUseSameData.Size = new System.Drawing.Size(365, 72);
             this.grpboxUseSameData.TabIndex = 42;
             this.grpboxUseSameData.TabStop = false;
             this.grpboxUseSameData.Text = "Use Same Data";
@@ -301,7 +302,7 @@
             this.btnClear.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnClear.Location = new System.Drawing.Point(755, 21);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(75, 27);
             this.btnClear.TabIndex = 43;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -319,7 +320,7 @@
             // numSelQuantum
             // 
             this.numSelQuantum.Enabled = false;
-            this.numSelQuantum.Location = new System.Drawing.Point(843, 393);
+            this.numSelQuantum.Location = new System.Drawing.Point(855, 393);
             this.numSelQuantum.Maximum = new decimal(new int[] {
             500,
             0,
@@ -339,19 +340,19 @@
             0,
             0});
             // 
-            // label1
+            // lblAuthor
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(856, 450);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 17);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "Author:";
+            this.lblAuthor.AutoSize = true;
+            this.lblAuthor.Location = new System.Drawing.Point(849, 450);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(54, 17);
+            this.lblAuthor.TabIndex = 46;
+            this.lblAuthor.Text = "Author:";
             // 
             // lnklblAuthor
             // 
             this.lnklblAuthor.AutoSize = true;
-            this.lnklblAuthor.Location = new System.Drawing.Point(906, 450);
+            this.lnklblAuthor.Location = new System.Drawing.Point(898, 450);
             this.lnklblAuthor.Name = "lnklblAuthor";
             this.lnklblAuthor.Size = new System.Drawing.Size(77, 17);
             this.lnklblAuthor.TabIndex = 47;
@@ -359,14 +360,15 @@
             this.lnklblAuthor.Text = "Chris Iossa";
             this.lnklblAuthor.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblAuthor_LinkClicked);
             // 
-            // lblAuthor
+            // frmSchedulingSim
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(995, 476);
             this.Controls.Add(this.lnklblAuthor);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.numSelQuantum);
             this.Controls.Add(this.lblQuantum);
             this.Controls.Add(this.btnClear);
@@ -379,8 +381,10 @@
             this.Controls.Add(this.txtConsole);
             this.Controls.Add(this.btnSave);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "lblAuthor";
+            this.MaximizeBox = false;
+            this.Name = "frmSchedulingSim";
             this.Text = "Scheduling Simulator";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSelProcCnt)).EndInit();
@@ -421,7 +425,7 @@
         private System.Windows.Forms.TextBox txtAvgWaitTimeRR;
         private System.Windows.Forms.Label lblQuantum;
         private System.Windows.Forms.NumericUpDown numSelQuantum;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAuthor;
         private System.Windows.Forms.LinkLabel lnklblAuthor;
     }
 }

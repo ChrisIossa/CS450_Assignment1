@@ -1,4 +1,20 @@
-﻿
+﻿/***
+ *      ____       _              _       _ _               ____  _                 _       _             
+ *     / ___|  ___| |__   ___  __| |_   _| (_)_ __   __ _  / ___|(_)_ __ ___  _   _| | __ _| |_ ___  _ __ 
+ *     \___ \ / __| '_ \ / _ \/ _` | | | | | | '_ \ / _` | \___ \| | '_ ` _ \| | | | |/ _` | __/ _ \| '__|
+ *      ___) | (__| | | |  __/ (_| | |_| | | | | | | (_| |  ___) | | | | | | | |_| | | (_| | || (_) | |   
+ *     |____/ \___|_| |_|\___|\__,_|\__,_|_|_|_| |_|\__, | |____/|_|_| |_| |_|\__,_|_|\__,_|\__\___/|_|   
+ *                                                  |___/                                                 
+ * 
+ * Author: Chris Iossa
+ * Language: C#
+ * Date: 2017-11-04
+ * Filename: Form1.cs
+ * 
+ * A Windows Form to control and display information from a scheduling simulator
+ * running First-Come-First-Serve and Round Robin Scheduling
+ * Algorithms on simulated processes
+ */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +28,7 @@ using System.IO;
 
 namespace CS450_Assignment1
 {
-    public partial class lblAuthor : Form
+    public partial class frmSchedulingSim : Form
     {
         //private member variables
         private uint maxProc = 10; //number of processes specefied by the user
@@ -21,65 +37,52 @@ namespace CS450_Assignment1
         private List<Process> processList = new List<Process>(); //queue to store processes waiting for CPU
         private Random randGen = new Random(); //RNG needed to randomly generate values
 
-        public lblAuthor()
+        public frmSchedulingSim()
         {
             InitializeComponent();
         }
 
+
         private void btnRun_Click(object sender, EventArgs e)
         {
-            
+
             if (rbtnReuseDataN.Checked)
             {
                 processList.Clear();
-                if (rbtnFCFS.Checked || rbtnComp.Checked)
+                if (rbtnFCFS.Checked || rbtnComp.Checked) //create FCFS proccesses with new randomly generated data
                 {
                     for (int i = 0; i < maxProc; i++)
                     {
                         if (processList.Count == 0)
                         {
-                            processList.Add(new Process(String.Concat("Process ", i), randGen.Next(1, 10), processList.Count + 1, true));
+                            processList.Add(new Process(String.Concat("Process ", i), randGen.Next(1, 10), processList.Count + 1, true)); //first process has an arrival time of 0
                         }
                         else
                         {
-                            processList.Add(new Process(String.Concat("Process ", i), randGen.Next(1, 10), processList.Count + 1, processList[processList.Count - 1].getCompletionTime(true), randGen.Next((processList[processList.Count - 1].getArrvTime() + 1), (processList[processList.Count - 1].getArrvTime() + 10)), true));
+                            processList.Add(new Process(String.Concat("Process ", i), randGen.Next(1, 10),i, randGen.Next(0, 150), true)); //new process with randomly generated values
                         }
                     }
                 }
-                else if (rbtnRoundRobin.Checked)
+                else if (rbtnRoundRobin.Checked) //create Round Robin processes with new randomly generated data
                 {
                     for (int i = 0; i < maxProc; i++)
                     {
-                        processList.Add(new Process(String.Concat("Process ", i), randGen.Next(1, 10), processList.Count + 1, false));
+                        processList.Add(new Process(String.Concat("Process ", i), randGen.Next(1, 10), processList.Count + 1, false)); 
                         if (i == 0)
                         {
                             processList[i].setArrvTime(0);
                         }
                         else
                         {
-                            processList[i].setArrvTime(randGen.Next((processList[i - 1].getArrvTime() + 1), (processList[i - 1].getArrvTime() + 10)));
+                            processList[i].setArrvTime(randGen.Next(0,150));
                         }
                     }
                 }
             }
-            else
+            else //use the old data
             {
-                
-                if (rbtnFCFS.Checked || rbtnComp.Checked)
-                {
-                    for (int i = 0; i < maxProc; i++)
-                    {
-                        if (i == 0)
-                        {
-                            processList[i].setStartTime(0,true);
-                        }
-                        else
-                        {
-                            processList[i].setStartTime(processList[i-1].getCompletionTime(true),true);
-                        }
-                    }
-                }
-                else
+                //make sure the processes are FCFS processes
+                if (rbtnRoundRobin.Checked)
                 {
                     for (int i = 0; i < maxProc; i++)
                     {
@@ -113,31 +116,25 @@ namespace CS450_Assignment1
                     txtConsole.AppendText("New Data");
                 }
                 txtConsole.AppendText("\r\n");
-                
-                txtConsole.AppendText("\r\n");
-               if (rbtnFCFS.Checked)
-                {
 
+                txtConsole.AppendText("\r\n");
+                if (rbtnFCFS.Checked)
+                {
+                    //run FCFS in single algorithm mode
                     fcfsAlg();
                 }
                 else
                 {
-                    /*
-                    processList.Clear();
-                    processList.Add(new Process("P1", 3, 0, 3, true));
-                    processList.Add(new Process("P2", 3, 0, 7, true));
-                    processList.Add(new Process("P3", 4, 0, 9, true));
-                    processList.Add(new Process("P4", 2, 1, 15, true));
-                    processList.Add(new Process("P5", 5, 0, 16, true));
-                    */
-                    roundRobAlg(Convert.ToInt32(numSelQuantum.Value));
+                    //run Round Robin Algorithm with the user selected quantum
+                    roundRobAlg(Convert.ToInt32(numSelQuantum.Value)); //run the round robin algoirthm with a time slice provided by the UI
                 }
             }
             else
             {
+                //run both algorithms
                 fcfsAlg();
                 roundRobAlg(Convert.ToInt32(numSelQuantum.Value));
-                
+
             }
             rbtnReuseDataY.Enabled = true; //as there is now an existing dataset, data can be reused
             txtConsole.AppendText("End Simulator: ");
@@ -155,9 +152,18 @@ namespace CS450_Assignment1
             txtConsole.AppendText(maxProc.ToString());
             txtConsole.AppendText("\r\n");
             txtConsole.AppendText("\r\n");
+            ProcessComparer procComp = new ProcessComparer();
+            processList.Sort(procComp);
             for (int i = 0; i < processList.Count(); i++)
             {
-
+                if (i == 0)
+                {
+                    processList[i].setStartTime(0,true);
+                }
+                else
+                {
+                    processList[i].setStartTime(processList[i-1].getCompletionTime(true), true);
+                }
                 txtConsole.AppendText(processList[i].getProcName());
                 txtConsole.AppendText("\r\n");
                 txtConsole.AppendText("Arrival Time:\t" + processList[i].getArrvTime());
@@ -209,29 +215,30 @@ namespace CS450_Assignment1
                 processListRR[i].setBurstRemaining(processListRR[i].getBurstTime());
             }
             processList.Clear();
-            int rrClock = 0;
-            int procCount = 0;
-            int passes = 0;
-            int minTime = 2147483647;
-            int minIndex = 0;
+            int rrClock = 0; //internal clock of the CPU
+            int procCount = 0; //number of finished proccesses
+            int passes = 0; //number of proccess whose arrivalTime is greater than current time of rrClock
+            int minTime = 2147483647; //arrival time of the earliest procces, originally set to max int
+            int minIndex = 0; //index of proccess with earliest arrival time
             while (procCount != maxProc)
             {
                 passes = 0;
                 minTime = 2147483647;
                 for (int i = 0; i < processListRR.Count; i++)
                 {
-                    if (processListRR[i].getArrvTime() <= rrClock)
+                    if (processListRR[i].getArrvTime() <= rrClock) //if proccess has arrived
                     {
-                        if (!processListRR[i].isCompleted())
+                        if (!processListRR[i].isCompleted()) //is not completed
                         {
-                            int timeSlice = processListRR[i].giveSlice(quantum, rrClock);
+
+                            int timeSlice = processListRR[i].giveSlice(quantum, rrClock);//give it a time slice, either the value of quantum or the amount of time needed for the proccess to finish
                             rrClock += timeSlice;
                         }
-                        if (!processListRR[i].isCompleted() && processListRR[i].getBurstRem() == 0)
+                        if (!processListRR[i].isCompleted() && processListRR[i].getBurstRem() == 0) //if the process is not marked as completed, but is not waiting for more time to execute
                         {
-                            processListRR[i].setCompletionTime(rrClock);
-                            procCount++;
-                            totalWait += processListRR[i].getWaitTime(false);
+                            processListRR[i].setCompletionTime(rrClock); //then it's completed, set the completed bool and set the completion time to the current value of the clock
+                            procCount++; 
+                            totalWait += processListRR[i].getWaitTime(false); //get the wait time and add it to the total wait time
                             txtTotalWaitRR.Text = String.Concat(totalWait.ToString(), " seconds");
                             txtAvgWaitTimeRR.Text = String.Concat((totalWait / procCount).ToString("0.000"), " seconds");
                         }
@@ -246,7 +253,7 @@ namespace CS450_Assignment1
                         }
                         if (passes == (maxProc - procCount))
                         {
-                            rrClock = processListRR[minIndex].getArrvTime();
+                            rrClock = processListRR[minIndex].getArrvTime();//if there is no proccess waiting for a new time slice, set the clock to the arrival time of the proccess with the next earliest arrvTime
                         }
                     }
                 }
@@ -257,7 +264,7 @@ namespace CS450_Assignment1
                 txtConsole.AppendText("\r\n");
                 txtConsole.AppendText("Arrival Time:\t" + processListRR[i].getArrvTime());
                 txtConsole.AppendText("\r\n");
-                txtConsole.AppendText("Start Time:\t" + processListRR[i].getArrvTime());
+                txtConsole.AppendText("Start Time:\t" + processListRR[i].getStartTime());
                 txtConsole.AppendText("\r\n");
                 txtConsole.AppendText("Wait Time:\t" + processListRR[i].getWaitTime(false));
                 txtConsole.AppendText("\r\n");
@@ -269,7 +276,7 @@ namespace CS450_Assignment1
                 txtConsole.AppendText("\r\n");
                 txtConsole.AppendText("\r\n");
                 processList.Add(new Process(processListRR[i].getProcName(), processListRR[i].getBurstTime(), processListRR[i].getPriority(), processListRR[i].getArrvTime(), false)); //add a copy of the process as an FCFS process to the arrayList so that it can be reused later   
-                
+
             }
             txtConsole.AppendText("\r\n");
             txtConsole.AppendText("\r\n");
@@ -284,6 +291,7 @@ namespace CS450_Assignment1
         private void numSelProcCnt_ValueChanged(object sender, EventArgs e)
         {
             maxProc = Convert.ToUInt32(numSelProcCnt.Value);
+            //data cannot be reused if the number of proccesses have changed, so reuse data is no longer available, new data must be generated
             rbtnReuseDataY.Enabled = false;
             rbtnReuseDataY.Checked = false;
             rbtnReuseDataN.Enabled = true;
@@ -297,6 +305,7 @@ namespace CS450_Assignment1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //save contents of text box to file
             SaveFileDialog save = new SaveFileDialog();
             save.FileName = "SchedulingSimulation.txt";
             save.Filter = "Text File | *.txt";
@@ -321,7 +330,7 @@ namespace CS450_Assignment1
 
         private void rbtnFCFS_CheckedChanged(object sender, EventArgs e)
         {
-            numSelQuantum.Enabled = false;
+            numSelQuantum.Enabled = false; //if FCFS is being used, quantum does not need to be set
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -342,6 +351,7 @@ namespace CS450_Assignment1
 
         private void rbtnComp_CheckedChanged(object sender, EventArgs e)
         {
+            //when in algorithm comparison mode, no algorithm needs to be explicitly set, and quantum needs to be available to be set
             rbtnFCFS.Checked = false;
             rbtnRoundRobin.Checked = false;
             rbtnFCFS.Enabled = false;
@@ -351,21 +361,23 @@ namespace CS450_Assignment1
 
         private void rbtnSingAlg_CheckedChanged(object sender, EventArgs e)
         {
+            //when moving back to single algorithm mode, and start it out on FCFS, quantum is now disabled
             rbtnFCFS.Checked = true;
             rbtnRoundRobin.Checked = false;
             rbtnFCFS.Enabled = true;
             rbtnRoundRobin.Enabled = true;
+            numSelQuantum.Enabled = false;
         }
 
         private void rbtnRoundRobin_CheckedChanged(object sender, EventArgs e)
         {
-            numSelQuantum.Enabled = true;
+            numSelQuantum.Enabled = true; //make quantum available for round robin
         }
 
         private void lnklblAuthor_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             lnklblAuthor.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://www.github.com/ChrisIossa");
+            System.Diagnostics.Process.Start("https://www.github.com/ChrisIossa"); //go to authors github on click
         }
     }
 }

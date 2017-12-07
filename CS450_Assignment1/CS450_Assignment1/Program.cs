@@ -16,7 +16,7 @@ namespace CS450_Assignment1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new lblAuthor());
+            Application.Run(new frmSchedulingSim());
         }
     }
 }

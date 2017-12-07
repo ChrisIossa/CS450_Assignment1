@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CS450_Assignment1
 {
-    class Process
+    public class Process
     {
         //empty constructor, never used by me
         public Process()
@@ -23,7 +23,7 @@ namespace CS450_Assignment1
             priority = priorIn;
             arrvTime = 0;
             startTime = arrvTime;
-            if(!isFCFS)
+            if (!isFCFS)
             {
                 burstRemaining = burstTime;
                 completed = false;
@@ -107,20 +107,30 @@ namespace CS450_Assignment1
                 startTime = startIn;
             }
         }
-        
+
         public void setBurstRemaining(int burstRemIn)
         {
             burstRemaining = burstRemIn;
         }
 
+        public void setCompletionTime(int compTimeIn)
+        {
+            if (!completed)
+            {
+                compTime = compTimeIn;
+                completed = true;
+            }
+        }
+
+        //give a time slice to round robin proccess
         public int giveSlice(int quantum, int internalTime)
         {
-            if(!started)
+            if (!started)
             {
-                started = true;
-                startTime = internalTime;
+                started = true; //if it wasn't started, it is now
+                startTime = internalTime; //and since it's started, it's start time is equal to current time
             }
-            if(burstRemaining>quantum)
+            if (burstRemaining > quantum)
             {
                 burstRemaining -= quantum;
                 return quantum;
@@ -163,15 +173,6 @@ namespace CS450_Assignment1
             return arrvTime;
         }
 
-        public void setCompletionTime(int compTimeIn)
-        {
-            if (!completed)
-            {
-                compTime = compTimeIn;
-                completed = true;
-            }
-        }
-
         public int getWaitTime(bool isFCFS)
         {
             return getTurnaroundTime(isFCFS) - burstTime;
@@ -198,7 +199,7 @@ namespace CS450_Assignment1
         {
             return burstRemaining;
         }
-        
+
         public int getStartTime()
         {
             return startTime;
@@ -221,5 +222,46 @@ namespace CS450_Assignment1
         private bool completed = false;
         private bool started = false;
 
+    }
+
+
+    public class ProcessComparer : IComparer<Process>
+    {
+        public int Compare(Process x, Process y)
+        {
+            if (x.getArrvTime() == 0)
+            {
+                if (y.getArrvTime() == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+
+                if (y.getArrvTime() == 0)
+                {
+                    return 1;
+                }
+                else
+                {
+
+                    int val = x.getArrvTime().CompareTo(y.getArrvTime());
+
+                    if (val != 0)
+                    {
+                        return val;
+                    }
+                    else
+                    {
+                        return x.getArrvTime().CompareTo(y.getArrvTime());
+                    }
+                }
+            }
+        }
     }
 }
