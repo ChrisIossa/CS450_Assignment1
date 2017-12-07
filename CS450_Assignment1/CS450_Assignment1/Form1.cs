@@ -126,6 +126,17 @@ namespace CS450_Assignment1
                 else
                 {
                     //run Round Robin Algorithm with the user selected quantum
+                    processList.Clear();
+                    processList.Add(new Process("P1", 7, 1, 3, false));
+                    processList.Add(new Process("P2", 5, 0, 5, false));
+                    processList.Add(new Process("P3", 4, 2, 9, false));
+                    processList.Add(new Process("P4", 4, 1, 15, false));
+                    processList.Add(new Process("P5", 6, 0, 21, false));
+                    processList.Add(new Process("P6", 3, 2, 30, false));
+                    processList.Add(new Process("P7", 7, 4, 36, false));
+                    processList.Add(new Process("P8", 5, 2, 37, false));
+                    processList.Add(new Process("P9", 3, 1, 39, false));
+                    processList.Add(new Process("P10", 5, 0, 48, false));
                     roundRobAlg(Convert.ToInt32(numSelQuantum.Value)); //run the round robin algoirthm with a time slice provided by the UI
                 }
             }
