@@ -1,4 +1,13 @@
-﻿using System;
+﻿/***
+ * Author: Chris Iossa
+ * Language: C#
+ * Date: 2017-11-04
+ * Filename: Process.cs
+ *
+ * A C# class to represent a CPU process to be executed using either FCFS or Round Robin scheduling
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +39,8 @@ namespace CS450_Assignment1
                 started = false;
             }
         }
-
+        
+        //constructor overload used for first process of FCFS or RR process
         public Process(String nameIn, int burstIn, int priorIn, int arrvIn, bool isFCFS)
         {
             procName = nameIn;
@@ -46,6 +56,7 @@ namespace CS450_Assignment1
             }
         }
 
+        //constructor used for an FCFS process that is not known to be the first one in
         public Process(String nameIn, int burstIn, int priorIn, int startIn, int arrvIn, bool isFCFS)
         {
             procName = nameIn;
